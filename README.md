@@ -26,4 +26,6 @@ curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/g
 
 ### クエリパラメーター
 
-- `?gamma=1.0`（デフォルトは2.2）
+- `?gamma=1.0`
+  - デフォルトは2.2
+  - 省略可能（省略された場合はgamma=2.2になる）
