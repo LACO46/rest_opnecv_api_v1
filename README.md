@@ -4,7 +4,7 @@
 
 - ガンマ補正を利用したグレースケール画像の作成
 
-## dockerのビルド方法
+## dockerコンテナのビルド方法
 
 ```
 docker build -t rest_opencv_api .
