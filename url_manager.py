@@ -15,3 +15,19 @@ class urls:
     def gray_scale():
         gray_scale_controller = gray_scale_controllers.gray_scale_controller()
         return gray_scale_controller.gray_scale(request)
+
+    @app.errorhandler(400)
+    @app.errorhandler(404)
+    @app.errorhandler(500)
+    def error_handler(error):
+        response = jsonify(
+            {
+                "code": error.code,
+                "status": error.code,
+                "result": {
+                    'error_name': error.name,
+                    'type': error.description
+                }
+            }
+        )
+        return response
