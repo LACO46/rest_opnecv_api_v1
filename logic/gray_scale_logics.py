@@ -2,14 +2,17 @@
 
 from api import gray_scale_apis
 from api import img_apis
+from werkzeug import datastructures
 
 
 class gray_scale_logic:
-    def gray_scale(self, file):
+    def gray_scale(self, img_file: datastructures.FileStorage, gamma_numerical: float) -> bytes:
+        # 変数を定義
         gray_scale_api = gray_scale_apis.gray_scale_api()
         img_api = img_apis.img_api()
 
-        if(('img' in file) == True):
-            img_gray_binary = gray_scale_api.gray_scale(file['img'])
-            return img_api.save_pil_img(img_gray_binary)
-        return None
+        # APIの取得
+        img_gray_binary = gray_scale_api.gamma_correction_gray_scale_api(
+            img_file, gamma_numerical)
+
+        return img_api.save_pil_img(img_gray_binary)
