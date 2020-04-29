@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 from flask import Flask, jsonify, request, Response
-from controller import gray_scale_controllers
+
+# import file
+from controller import (gray_scale_controllers)
 
 
 class urls:

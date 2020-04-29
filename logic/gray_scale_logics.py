@@ -1,8 +1,10 @@
 # -*- coding:utf-8 -*-
 
+from werkzeug import datastructures
+
+# import file
 from api import gray_scale_apis
 from api import img_apis
-from werkzeug import datastructures
 
 
 class gray_scale_logic:

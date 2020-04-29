@@ -1,8 +1,10 @@
 # -*- coding:utf-8 -*-
 
-from logic import gray_scale_logics
 from flask import send_file, make_response, jsonify, wrappers
 from werkzeug import local
+
+# import file
+from logic import gray_scale_logics
 
 
 class gray_scale_controller:
