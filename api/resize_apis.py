@@ -19,3 +19,12 @@ class resize_api:
 
         # リサイズ
         return cv2.resize(img, (int(width * times_numerical), int(height * times_numerical)))
+
+    def designation_size_api(self, img_file, x_numerical:int, y_numerical: int) -> list:
+        # imgの数値のリストを読み込み
+        stream = img_file.stream
+        img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
+        img = cv2.imdecode(img_array, 1)
+
+        # リサイズ
+        return cv2.resize(img, dsize=(x_numerical, y_numerical))

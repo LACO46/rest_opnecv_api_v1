@@ -23,6 +23,13 @@ class urls:
         resize_controller = resize_controllers.resize_controller()
         return resize_controller.same_size(request)
 
+    @app.route('/v1/resize/designation-size/<string:designation_size>/', methods=['POST'])
+    def designation_size(designation_size):
+        print(designation_size)
+        resize_controller = resize_controllers.resize_controller()
+        return resize_controller.designation_size(request, designation_size)
+
+
     @app.errorhandler(400)
     @app.errorhandler(404)
     @app.errorhandler(500)

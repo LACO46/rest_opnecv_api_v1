@@ -30,3 +30,23 @@ class resize_controller:
         response = make_response(some_size_img)
         response.headers.set('Content-Type', 'image/png')
         return response
+
+    def designation_size(self, request: local.LocalProxy, designation_size: str):
+        # 変数を定義
+        resize_logic = resize_logics.resize_logic()
+        file = request.files
+        size = designation_size.split("*")
+        x = int(size[0])
+        y = int(size[1])
+
+        # imgファイルが存在することを確認
+        if ('img' not in file):
+            return jsonify({'message': 'request image not found'}), 404
+
+        # logicの呼び出し
+        designation_size_img = resize_logic.designation_size(file['img'], x, y)
+        
+        # レスポンスの作成
+        response = make_response(designation_size_img)
+        response.headers.set('Content-Type', 'image/png')
+        return response
