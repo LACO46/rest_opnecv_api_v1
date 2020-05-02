@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request, Response
 
 # import file
-from controller import (gray_scale_controllers)
+from controller import (gray_scale_controllers, resize_controllers)
 
 
 class urls:
@@ -17,6 +17,11 @@ class urls:
     def gray_scale():
         gray_scale_controller = gray_scale_controllers.gray_scale_controller()
         return gray_scale_controller.gray_scale(request)
+
+    @app.route('/v1/resize/same-size/', methods=['POST'])
+    def same_size():
+        resize_controller = resize_controllers.resize_controller()
+        return resize_controller.same_size(request)
 
     @app.errorhandler(400)
     @app.errorhandler(404)
