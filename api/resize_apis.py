@@ -18,7 +18,7 @@ class resize_api:
         width = img.shape[1]
 
         # リサイズ
-        return cv2.resize(img, (int(width * times_numerical), int(height * times_numerical)))
+        return cv2.resize(img, dsize=(int(width * times_numerical), int(height * times_numerical)), interpolation=cv2.INTER_LANCZOS4)
 
     def designation_size_api(self, img_file, x_numerical:int, y_numerical: int) -> list:
         # imgの数値のリストを読み込み
@@ -27,4 +27,4 @@ class resize_api:
         img = cv2.imdecode(img_array, 1)
 
         # リサイズ
-        return cv2.resize(img, dsize=(x_numerical, y_numerical))
+        return cv2.resize(img, dsize=(x_numerical, y_numerical), interpolation=cv2.INTER_LANCZOS4)
