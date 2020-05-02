@@ -18,14 +18,13 @@ class urls:
         gray_scale_controller = gray_scale_controllers.gray_scale_controller()
         return gray_scale_controller.gray_scale(request)
 
-    @app.route('/v1/resize/same-size/', methods=['POST'])
-    def same_size():
+    @app.route('/v1/resize/same-size/<float:times>/', methods=['POST'])
+    def same_size(times):
         resize_controller = resize_controllers.resize_controller()
-        return resize_controller.same_size(request)
+        return resize_controller.same_size(request, times)
 
     @app.route('/v1/resize/designation-size/<string:designation_size>/', methods=['POST'])
     def designation_size(designation_size):
-        print(designation_size)
         resize_controller = resize_controllers.resize_controller()
         return resize_controller.designation_size(request, designation_size)
 

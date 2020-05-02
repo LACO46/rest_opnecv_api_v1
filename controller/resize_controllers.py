@@ -8,20 +8,14 @@ from logic import resize_logics
 
 
 class resize_controller:
-    def same_size(self, request: local.LocalProxy):
+    def same_size(self, request: local.LocalProxy, times: float):
         # 変数を定義
         resize_logic = resize_logics.resize_logic()
         file = request.files
-        times = 1.0
 
         # imgファイルが存在することを確認
         if ('img' not in file):
             return jsonify({'message': 'request image not found'}), 404
-        try:
-            if (request.args.get('times')):
-                times = float(request.args.get('times'))
-        except ValueError:
-            return jsonify({'message': 'incorrect times param'}), 500
 
         # logicの呼び出し
         some_size_img = resize_logic.same_size(file['img'], times)

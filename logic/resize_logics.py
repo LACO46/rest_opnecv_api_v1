@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from werkzeug import datastructures
+import cv2
 
 # import file
 from api import resize_apis
@@ -15,7 +16,6 @@ class resize_logic:
 
         # APIから画像を取得
         img_resize_binary = resize_api.same_size_api(img_file, times_numerical)
-
         return img_api.save_pil_img(img_resize_binary)
 
     def designation_size(self, img_file, x_numerical:int, y_numerical: int) -> bytes:
