@@ -3,8 +3,7 @@
 from werkzeug import datastructures
 
 # import file
-from api import resize_apis
-from api import img_apis
+from api import (resize_apis, img_apis)
 
 
 class resize_logic:
