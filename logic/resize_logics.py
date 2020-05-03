@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
 from werkzeug import datastructures
-import cv2
 
 # import file
 from api import resize_apis
