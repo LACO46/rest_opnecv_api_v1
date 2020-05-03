@@ -45,9 +45,17 @@ curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/r
 ### リクエスト
 
 ```
-curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/resize/designation-size/<size>/
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/resize/designation-size/<x_size>*<y_size>/
 ```
 
-- `<size>` は `x*y`の形式で指定
-- xとyはintを指定
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+- `<x_size>` と `<y_size>` はintを指定
+
+## ２値化画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/binarization/<threshold>/
+```
+
+- `<threshold>` はintを指定
