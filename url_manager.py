@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request, Response
 
 # import file
-from controller import (gray_scale_controllers, resize_controllers)
+from controller import (gray_scale_controllers, resize_controllers, binarization_controllers)
 
 
 class urls:
@@ -28,6 +28,10 @@ class urls:
         resize_controller = resize_controllers.resize_controller()
         return resize_controller.designation_size(request, designation_size)
 
+    @app.route('/v1/binarization/<int:threshold>/', methods=['POST'])
+    def binarization(threshold):
+        binarization_controller = binarization_controllers.binarization_controller()
+        return binarization_controller.binarization(request, threshold)
 
     @app.errorhandler(400)
     @app.errorhandler(404)
