@@ -33,6 +33,11 @@ class urls:
         binarization_controller = binarization_controllers.binarization_controller()
         return binarization_controller.binarization(request, threshold)
 
+    @app.route('/v1/adaptive/binarization/<int:block_size>/<int:mean_c>/', methods=['POST'])
+    def adaptive_binarization(block_size, mean_c):
+        binarization_controller = binarization_controllers.binarization_controller()
+        return binarization_controller.adaptive_binarization(request, block_size, mean_c)
+
     @app.errorhandler(400)
     @app.errorhandler(404)
     @app.errorhandler(500)
