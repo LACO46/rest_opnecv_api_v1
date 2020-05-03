@@ -8,12 +8,12 @@ import sys
 
 class gray_scale_api:
     def gamma_correction_gray_scale_api(self, img_file: datastructures.FileStorage, gamma_numerical: float) -> list:
-        # imgを低輝度に対応した数値のリストに変更
+        # imgの数値のリストを読み込み
         stream = img_file.stream
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
+        img = cv2.imdecode(img_array, 1)
 
         # opencvのガンマ補正を利用してグレースケールにする
-        img = cv2.imdecode(img_array, 1)
         gamma22LUT = np.array([pow(x / 255.0, gamma_numerical)
                                for x in range(256)], dtype='float32')
         img_of_lut = cv2.LUT(img, gamma22LUT)

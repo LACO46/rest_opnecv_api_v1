@@ -12,9 +12,9 @@ RUN apt-get update \
 
 RUN wget https://bootstrap.pypa.io/get-pip.py
 
-RUN pip3 install flask
-RUN pip3 install matplotlib
-RUN pip3 install numpy
-RUN pip3 install opencv-contrib-python
-RUN pip3 install opencv-python
-RUN pip3 install Pillow
+RUN pip3 install flask \
+                 matplotlib \
+                 numpy \
+                 opencv-contrib-python \
+                 opencv-python \
+                 Pillow
