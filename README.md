@@ -29,3 +29,25 @@ curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/g
 - `?gamma=1.0`
   - デフォルトは2.2
   - 省略可能（省略された場合はgamma=2.2になる）
+
+## 等倍したリサイズ画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/resize/same-size/<size>/
+```
+
+- `<size>` はfloatを指定
+
+## サイズを指定したリサイズ画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/resize/designation-size/<size>/
+```
+
+- `<size>` は `x*y`の形式で指定
+- xとyはintを指定
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
