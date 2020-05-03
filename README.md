@@ -59,3 +59,13 @@ curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/b
 ```
 
 - `<threshold>` はintを指定
+
+## 適応的閾値処理を用いた2値化画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/adaptive/binarization/<block_size>/<mean_c>/
+```
+
+- `<block_size>` と `<mean_c>` はintを指定
