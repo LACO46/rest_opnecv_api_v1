@@ -69,3 +69,15 @@ curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/a
 ```
 
 - `<block_size>` と `<mean_c>` はintを指定
+  - `<block_size>` は奇数である必要がある
+
+## エッジ検出処理を用いた画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/edge-detection/<threshold_max>/<threshold_min>/
+```
+
+- `<threshold_max>` と `<threshold_min>` はintを指定
+  - `<threshold_max> > <threshold_min>` である必要がある
