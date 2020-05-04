@@ -3,8 +3,7 @@
 from werkzeug import datastructures
 
 # import file
-from api import gray_scale_apis
-from api import img_apis
+from api import (gray_scale_apis, img_apis)
 
 
 class gray_scale_logic:

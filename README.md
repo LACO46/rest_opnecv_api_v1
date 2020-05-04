@@ -29,3 +29,43 @@ curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/g
 - `?gamma=1.0`
   - デフォルトは2.2
   - 省略可能（省略された場合はgamma=2.2になる）
+
+## 等倍したリサイズ画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/resize/same-size/<size>/
+```
+
+- `<size>` はfloatを指定
+
+## サイズを指定したリサイズ画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/resize/designation-size/<x_size>*<y_size>/
+```
+
+- `<x_size>` と `<y_size>` はintを指定
+
+## ２値化画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/binarization/<threshold>/
+```
+
+- `<threshold>` はintを指定
+
+## 適応的閾値処理を用いた2値化画像の作成
+
+### リクエスト
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/adaptive/binarization/<block_size>/<mean_c>/
+```
+
+- `<block_size>` と `<mean_c>` はintを指定

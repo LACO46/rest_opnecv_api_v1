@@ -1,11 +1,9 @@
 # -*- coding:utf-8 -*-
 
 from werkzeug import datastructures
-import cv2
 
 # import file
-from api import resize_apis
-from api import img_apis
+from api import (resize_apis, img_apis)
 
 
 class resize_logic:
