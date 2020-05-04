@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request, Response
 
 # import file
-from controller import (gray_scale_controllers, resize_controllers, binarization_controllers)
+from controller import (gray_scale_controllers, resize_controllers, binarization_controllers, edge_detection_controllers)
 
 
 class urls:
@@ -37,6 +37,11 @@ class urls:
     def adaptive_binarization(block_size, mean_c):
         binarization_controller = binarization_controllers.binarization_controller()
         return binarization_controller.adaptive_binarization(request, block_size, mean_c)
+
+    @app.route('/v1/edge-detection/<int:threshold_max>/<int:threshold_min>/', methods=['POST'])
+    def edge_detection(threshold_max, threshold_min):
+        edge_detection_controller = edge_detection_controllers.edge_detection_controller()
+        return edge_detection_controller.edge_detection(request, threshold_max, threshold_min)
 
     @app.errorhandler(400)
     @app.errorhandler(404)
