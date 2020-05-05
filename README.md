@@ -92,7 +92,18 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 ### リクエスト
 
 ```
-curl --output <保存する> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/blur/average/<x>/<y>/
+curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/blur/average/<x>/<y>/
 ```
 
 - `<x>` と `<y>` はintを指定
+
+## ガウシアンフィルタのぼかし処理を用いた画像の作成
+
+### リクエスト
+
+```
+curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/blur/gaussian/<x>/<y>/<sigma>/
+```
+
+- `<x>` と `<y>` と `<sigma>` はintを指定
+  - `<x>` と `<y>` は奇数である必要がある
