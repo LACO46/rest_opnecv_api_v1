@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request, Response
 
 # import file
-from controller import (gray_scale_controllers, resize_controllers, binarization_controllers, edge_detection_controllers)
+from controller import (gray_scale_controllers, resize_controllers, binarization_controllers, edge_detection_controllers, blur_controllers)
 
 
 class urls:
@@ -42,6 +42,11 @@ class urls:
     def edge_detection(threshold_max, threshold_min):
         edge_detection_controller = edge_detection_controllers.edge_detection_controller()
         return edge_detection_controller.edge_detection(request, threshold_max, threshold_min)
+
+    @app.route('/v1/blur/average/<int:x>/<int:y>/', methods=['POST'])
+    def blurs_average(x, y):
+        blur_controller = blur_controllers.blur_controller()
+        return blur_controller.average(request, x, y)
 
     @app.errorhandler(400)
     @app.errorhandler(404)
