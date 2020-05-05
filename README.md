@@ -26,7 +26,7 @@ docker run -it -p 8080:80  -v /Users/tsudzukiyoshifumi/Documents/productions/Hom
 ### リクエスト
 
 ```
-curl --output <保存先のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/gray/
+curl --output <保存先のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/gray/
 ```
 
 ### クエリパラメーター
@@ -40,7 +40,7 @@ curl --output <保存先のPATH> -X POST -F img=@./<元の画像のPATH> localho
 ### リクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/resize/same-size/<size>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/resize/same-size/<size>/
 ```
 
 - `<size>` はfloatを指定
@@ -50,7 +50,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 ### リクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/resize/designation-size/<x_size>*<y_size>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/resize/designation-size/<x_size>*<y_size>/
 ```
 
 - `<x_size>` と `<y_size>` はintを指定
@@ -60,7 +60,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 ### リクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/binarization/<threshold>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/binarization/<threshold>/
 ```
 
 - `<threshold>` はintを指定
@@ -70,7 +70,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 ### リクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/adaptive/binarization/<block_size>/<mean_c>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/adaptive/binarization/<block_size>/<mean_c>/
 ```
 
 - `<block_size>` と `<mean_c>` はintを指定
@@ -81,7 +81,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 ### リクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/edge-detection/<threshold_max>/<threshold_min>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/edge-detection/<threshold_max>/<threshold_min>/
 ```
 
 - `<threshold_max>` と `<threshold_min>` はintを指定
@@ -92,7 +92,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 ### リクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/blur/average/<x>/<y>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/average/<x>/<y>/
 ```
 
 - `<x>` と `<y>` はintを指定
@@ -102,7 +102,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 ### リクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH> localhost:8080/v1/blur/gaussian/<x>/<y>/<sigma>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/gaussian/<x>/<y>/<sigma>/
 ```
 
 - `<x>` と `<y>` と `<sigma>` はintを指定
@@ -113,8 +113,18 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 ### リクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/blur/median/<median_numeric>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/median/<median_numeric>/
 ```
 
 - `<median_numeric>` はintを指定
   - `<median_numeric>` は奇数である必要がある
+
+## バイラテラルフィルタのぼかし処理を用いた画像の作成
+
+### リクエスト
+
+```
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/bilateral/<pixel_interest>/<sigma_color>/<sigma_space>/
+```
+
+- `<pixel_interest>` と `<sigma_color>` と `<sigma_space>` はintを指定
