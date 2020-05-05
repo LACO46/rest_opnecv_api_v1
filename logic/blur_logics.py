@@ -15,3 +15,12 @@ class blur_logic:
         # APIから画像を取得
         img_blur_binary = blur_api.average(img_file, x, y)
         return img_api.save_pil_img(img_blur_binary)
+
+    def gaussian(self, img_file: datastructures.FileStorage, x: int, y: int, sigma: int) -> bytes:
+        # 変数を定義
+        blur_api = blur_apis.blur_api()
+        img_api = img_apis.img_api()
+
+        # APIから画像を取得
+        img_blur_binary = blur_api.gaussian(img_file, x, y, sigma)
+        return img_api.save_pil_img(img_blur_binary)

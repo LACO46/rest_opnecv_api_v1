@@ -48,6 +48,11 @@ class urls:
         blur_controller = blur_controllers.blur_controller()
         return blur_controller.average(request, x, y)
 
+    @app.route('/v1/blur/gaussian/<int:x>/<int:y>/<int:sigma>/', methods=['POST'])
+    def blurs_gaussian(x, y, sigma):
+        blur_controller = blur_controllers.blur_controller()
+        return blur_controller.gaussian(request, x, y, sigma)
+
     @app.errorhandler(400)
     @app.errorhandler(404)
     @app.errorhandler(500)

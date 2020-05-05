@@ -13,5 +13,14 @@ class blur_api:
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
         img = cv2.imdecode(img_array, 1)
 
-        # エッジ検出する
+        # xとyの平均値を利用したぼかし画像を作成
         return cv2.blur(img, (x, y))
+
+    def gaussian(self, img_file: datastructures.FileStorage, x: int, y: int, sigma: int) -> list:
+        # imgの数値のリストを読み込み
+        stream = img_file.stream
+        img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
+        img = cv2.imdecode(img_array, 1)
+
+        # xガウシアンフィルタを利用したぼかし画像を作成
+        return cv2.GaussianBlur(img, (x, y), sigma)
