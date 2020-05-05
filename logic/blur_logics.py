@@ -24,3 +24,12 @@ class blur_logic:
         # APIから画像を取得
         img_blur_binary = blur_api.gaussian(img_file, x, y, sigma)
         return img_api.save_pil_img(img_blur_binary)
+
+    def median(self, img_file: datastructures.FileStorage, median_numeric: int) -> bytes:
+        # 変数を定義
+        blur_api = blur_apis.blur_api()
+        img_api = img_apis.img_api()
+
+        # APIから画像を取得
+        img_blur_binary = blur_api.median(img_file, median_numeric)
+        return img_api.save_pil_img(img_blur_binary)

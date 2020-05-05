@@ -41,3 +41,20 @@ class blur_controller:
         response = make_response(blur_img)
         response.headers.set('Content-Type', 'image/png')
         return response
+
+    def median(self, request: local.LocalProxy, median_numeric: int) -> wrappers.Response:
+        # 変数を定義
+        blur_logic = blur_logics.blur_logic()
+        file = request.files
+
+        # imgファイルが存在することを確認
+        if (not 'img' in file):
+            return jsonify({'message': 'request image not found'}), 404
+
+        # logicの呼び出し
+        blur_img = blur_logic.median(file['img'], median_numeric)
+
+        # レスポンスを作成
+        response = make_response(blur_img)
+        response.headers.set('Content-Type', 'image/png')
+        return response

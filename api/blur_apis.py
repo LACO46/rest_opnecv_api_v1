@@ -22,5 +22,14 @@ class blur_api:
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
         img = cv2.imdecode(img_array, 1)
 
-        # xガウシアンフィルタを利用したぼかし画像を作成
+        # ガウシアンフィルタを利用したぼかし画像を作成
         return cv2.GaussianBlur(img, (x, y), sigma)
+
+    def median(self, img_file: datastructures.FileStorage, median_numeric: int) -> list:
+        # imgの数値のリストを読み込み
+        stream = img_file.stream
+        img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
+        img = cv2.imdecode(img_array, 1)
+
+        # 中央値を利用したぼかし画像を作成
+        return cv2.medianBlur(img,median_numeric)

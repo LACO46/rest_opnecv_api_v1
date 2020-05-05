@@ -53,6 +53,12 @@ class urls:
         blur_controller = blur_controllers.blur_controller()
         return blur_controller.gaussian(request, x, y, sigma)
 
+    @app.route('/v1/blur/median/<int:median_numeric>/', methods=['POST'])
+    def blurs_median(median_numeric):
+        blur_controller = blur_controllers.blur_controller()
+        return blur_controller.median(request, median_numeric)
+        
+
     @app.errorhandler(400)
     @app.errorhandler(404)
     @app.errorhandler(500)
