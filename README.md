@@ -107,3 +107,14 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./<元の画像のPATH
 
 - `<x>` と `<y>` と `<sigma>` はintを指定
   - `<x>` と `<y>` は奇数である必要がある
+
+## 中央値ぼかし処理を用いた画像の作成
+
+### リクエスト
+
+```
+curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/blur/median/<median_numeric>/
+```
+
+- `<median_numeric>` はintを指定
+  - `<median_numeric>` は奇数である必要がある
