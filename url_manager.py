@@ -58,6 +58,11 @@ class urls:
         blur_controller = blur_controllers.blur_controller()
         return blur_controller.median(request, median_numeric)
         
+    @app.route('/v1/blur/bilateral/<int:pixel_interest>/<int:sigma_color>/<int:sigma_space>/', methods=['POST'])
+    def blurs_bilateral(pixel_interest, sigma_color, sigma_space):
+        blur_controller = blur_controllers.blur_controller()
+        return blur_controller.bilateral(request, pixel_interest, sigma_color, sigma_space)
+        
 
     @app.errorhandler(400)
     @app.errorhandler(404)

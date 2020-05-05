@@ -58,3 +58,20 @@ class blur_controller:
         response = make_response(blur_img)
         response.headers.set('Content-Type', 'image/png')
         return response
+
+    def bilateral(self, request: local.LocalProxy, pixel_interest: int, sigma_color: int, sigma_space: int) -> wrappers.Response:
+        # 変数を定義
+        blur_logic = blur_logics.blur_logic()
+        file = request.files
+
+        # imgファイルが存在することを確認
+        if (not 'img' in file):
+            return jsonify({'message': 'request image not found'}), 404
+
+        # logicの呼び出し
+        blur_img = blur_logic.bilateral(file['img'], pixel_interest, sigma_color, sigma_space)
+
+        # レスポンスを作成
+        response = make_response(blur_img)
+        response.headers.set('Content-Type', 'image/png')
+        return response
