@@ -14,6 +14,6 @@ class convolution_2d_filter_logic:
         convolution_2d_filter_api = convolution_2d_filter_apis.convolution_2d_filter_api()
         img_api = img_apis.img_api()
 
-        # # APIから画像を取得
+        # APIから画像を取得
         img_gray_binary = convolution_2d_filter_api.convolution_2d_filter(img_file, kernel_np_array)
         return img_api.save_pil_img(img_gray_binary)
