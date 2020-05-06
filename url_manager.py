@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request, Response
 
 # import file
-from controller import (gray_scale_controllers, resize_controllers, binarization_controllers, edge_detection_controllers, blur_controllers)
+from controller import (gray_scale_controllers, resize_controllers, binarization_controllers, edge_detection_controllers, blur_controllers, convolution_2d_filter_controllers)
 
 
 class urls:
@@ -63,6 +63,10 @@ class urls:
         blur_controller = blur_controllers.blur_controller()
         return blur_controller.bilateral(request, pixel_interest, sigma_color, sigma_space)
         
+    @app.route('/v1/convolution-2d/<string:kernel>/', methods=['POST'])
+    def convolution_2d_filter(kernel):
+        convolution_2d_filter_controller = convolution_2d_filter_controllers.convolution_2d_filter_controller()
+        return convolution_2d_filter_controller.convolution_2d_filter(request, kernel)
 
     @app.errorhandler(400)
     @app.errorhandler(404)
