@@ -128,3 +128,51 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 ```
 
 - `<pixel_interest>` と `<sigma_color>` と `<sigma_space>` はintを指定
+
+## Convolutional Neural Network処理を用いたシャープネス画像の作成
+
+### リクエスト
+
+- シャープネスレベル１
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/<kernel>/
+```
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,0,3,0,0,-1,0/
+```
+
+- シャープネスレベル２
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,-1,5,-1,0,-1,0/
+```
+
+- シャープネスレベル３
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
+```
+
+- シャープネスレベル４
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
+```
+
+- シャープネスレベル５
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-2,-1,-2,12,-2,-1,-2,-1/
+```
+
+- シャープネスレベル６
+
+```
+curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/1,4,6,4,1,4,16,24,16,4,6,24,-476,24,6,4,16,24,16,4,1,4,6,4,1/
+```
+
+- `<kernel>` は数値を `,` で区切る必要がある
+  - 例：`n,m,o,p`
+- `<kernel>` の長さは、 `n^2` で表すことのできる長さである必要がある
