@@ -23,7 +23,7 @@ docker build -t rest_opencv_api .
 ## 起動コマンド
 
 ```
-docker run -it -p 8080:80  -v /Users/tsudzukiyoshifumi/Documents/productions/HomeSisytem/rest_opnecv_api:/home rest_opencv_api
+docker run -it -p 8080:80  -v /<絶対PATH>/rest_opnecv_api:/home rest_opencv_api
 ```
 
 ## 画像について
@@ -144,43 +144,43 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 ### シャープネス画像作成のリクエスト
 
 ```
-curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/<kernel>/
+curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/<kernel>/
 ```
 
 ### シャープネスレベル１
 
 ```
-curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,0,3,0,0,-1,0/
+curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,0,3,0,0,-1,0/
 ```
 
 ### シャープネスレベル２
 
 ```
-curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,-1,5,-1,0,-1,0/
+curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,-1,5,-1,0,-1,0/
 ```
 
 ### シャープネスレベル３
 
 ```
-curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
+curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
 ```
 
 ### シャープネスレベル４
 
 ```
-curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
+curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
 ```
 
 ### シャープネスレベル５
 
 ```
-curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-2,-1,-2,12,-2,-1,-2,-1/
+curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-2,-1,-2,12,-2,-1,-2,-1/
 ```
 
 ### シャープネスレベル６
 
 ```
-curl --output ~/Desktop/test.png -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/1,4,6,4,1,4,16,24,16,4,6,24,-476,24,6,4,16,24,16,4,1,4,6,4,1/
+curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/1,4,6,4,1,4,16,24,16,4,6,24,-476,24,6,4,16,24,16,4,1,4,6,4,1/
 ```
 
 - `<kernel>` は数値を `,` で区切る必要がある
