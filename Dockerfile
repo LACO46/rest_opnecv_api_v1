@@ -18,3 +18,5 @@ RUN pip3 install flask \
                  opencv-contrib-python \
                  opencv-python \
                  Pillow
+
+WORKDIR /home
