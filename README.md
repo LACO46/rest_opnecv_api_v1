@@ -6,24 +6,24 @@
 - 等倍したリサイズ画像の作成
 - サイズを指定したリサイズ画像の作成
 - ２値化画像の作成
-- 適応的閾値処理を用いた2値化画像の作成
+- 適応的閾値処理を用いた 2 値化画像の作成
 - エッジ検出処理を用いた画像の作成
 - 指定範囲の平均ぼかし処理を用いた画像の作成
 - ガウシアンフィルタのぼかし処理を用いた画像の作成
 - 中央値ぼかし処理を用いた画像の作成
 - バイラテラルフィルタのぼかし処理を用いた画像の作成
-- Convolutional Neural Network処理を用いたシャープネス画像の作成
+- Convolutional Neural Network 処理を用いたシャープネス画像の作成
 
-## dockerコンテナのビルド方法
+## docker コンテナのビルド方法
 
 ```
-docker build -t rest_opencv_api .
+docker-compose build
 ```
 
 ## 起動コマンド
 
 ```
-docker run -it -p 8080:80  -v /<絶対PATH>/rest_opnecv_api:/home rest_opencv_api
+docker-compose up
 ```
 
 ## 画像について
@@ -42,8 +42,8 @@ curl --output <保存先のPATH> -X POST -F img=@<元の画像のPATH> localhost
 ### クエリパラメーター
 
 - `?gamma=1.0`
-  - デフォルトは2.2
-  - 省略可能（省略された場合はgamma=2.2になる）
+  - デフォルトは 2.2
+  - 省略可能（省略された場合は gamma=2.2 になる）
 
 ## 等倍したリサイズ画像の作成
 
@@ -53,7 +53,7 @@ curl --output <保存先のPATH> -X POST -F img=@<元の画像のPATH> localhost
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/resize/same-size/<size>/
 ```
 
-- `<size>` はfloatを指定
+- `<size>` は float を指定
 
 ## サイズを指定したリサイズ画像の作成
 
@@ -63,7 +63,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/resize/designation-size/<x_size>*<y_size>/
 ```
 
-- `<x_size>` と `<y_size>` はintを指定
+- `<x_size>` と `<y_size>` は int を指定
 
 ## ２値化画像の作成
 
@@ -73,9 +73,9 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/binarization/<threshold>/
 ```
 
-- `<threshold>` はintを指定
+- `<threshold>` は int を指定
 
-## 適応的閾値処理を用いた2値化画像の作成
+## 適応的閾値処理を用いた 2 値化画像の作成
 
 ### リクエスト
 
@@ -83,7 +83,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/adaptive/binarization/<block_size>/<mean_c>/
 ```
 
-- `<block_size>` と `<mean_c>` はintを指定
+- `<block_size>` と `<mean_c>` は int を指定
   - `<block_size>` は奇数である必要がある
 
 ## エッジ検出処理を用いた画像の作成
@@ -94,7 +94,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/edge-detection/<threshold_max>/<threshold_min>/
 ```
 
-- `<threshold_max>` と `<threshold_min>` はintを指定
+- `<threshold_max>` と `<threshold_min>` は int を指定
   - `<threshold_max> > <threshold_min>` である必要がある
 
 ## 指定範囲の平均ぼかし処理を用いた画像の作成
@@ -105,7 +105,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/average/<x>/<y>/
 ```
 
-- `<x>` と `<y>` はintを指定
+- `<x>` と `<y>` は int を指定
 
 ## ガウシアンフィルタのぼかし処理を用いた画像の作成
 
@@ -115,7 +115,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/gaussian/<x>/<y>/<sigma>/
 ```
 
-- `<x>` と `<y>` と `<sigma>` はintを指定
+- `<x>` と `<y>` と `<sigma>` は int を指定
   - `<x>` と `<y>` は奇数である必要がある
 
 ## 中央値ぼかし処理を用いた画像の作成
@@ -126,7 +126,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/median/<median_numeric>/
 ```
 
-- `<median_numeric>` はintを指定
+- `<median_numeric>` は int を指定
   - `<median_numeric>` は奇数である必要がある
 
 ## バイラテラルフィルタのぼかし処理を用いた画像の作成
@@ -137,9 +137,9 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/bilateral/<pixel_interest>/<sigma_color>/<sigma_space>/
 ```
 
-- `<pixel_interest>` と `<sigma_color>` と `<sigma_space>` はintを指定
+- `<pixel_interest>` と `<sigma_color>` と `<sigma_space>` は int を指定
 
-## Convolutional Neural Network処理を用いた画像の作成
+## Convolutional Neural Network 処理を用いた画像の作成
 
 ### シャープネス画像作成のリクエスト
 
