@@ -6,6 +6,7 @@ from werkzeug import local
 # import file
 from logic import binarization_logics
 
+
 class binarization_controller:
     def binarization(self, request: local.LocalProxy, threshold: int):
         # 変数を定義
@@ -34,11 +35,12 @@ class binarization_controller:
             return jsonify({'message': 'request image not found'}), 404
 
         # block_sizeが機数であるか確認
-        if(block_size%2 != 1):
+        if(block_size % 2 != 1):
             return jsonify({'message': 'request block_size is must odd'}), 500
 
         # logicの呼び出し
-        img = binarization_logic.adaptive_binarization(file['img'], block_size, mean_c)
+        img = binarization_logic.adaptive_binarization(
+            file['img'], block_size, mean_c)
 
         # レスポンスの作成
         response = make_response(img)

@@ -40,5 +40,6 @@ class blur_logic:
         img_api = img_apis.img_api()
 
         # APIから画像を取得
-        img_blur_binary = blur_api.bilateral(img_file, pixel_interest, sigma_color, sigma_space)
+        img_blur_binary = blur_api.bilateral(
+            img_file, pixel_interest, sigma_color, sigma_space)
         return img_api.save_pil_img(img_blur_binary)

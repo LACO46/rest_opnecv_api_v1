@@ -28,7 +28,8 @@ class convolution_2d_filter_controller:
             return jsonify({'message': 'requested kernel is invalid'}), 500
 
         # logicの呼び出し
-        filter_img = convolution_2d_filter_logic.convolution_2d_filter(file['img'], int(size), kernel_list)
+        filter_img = convolution_2d_filter_logic.convolution_2d_filter(
+            file['img'], int(size), kernel_list)
 
         # レスポンスを作成
         response = make_response(filter_img)

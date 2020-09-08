@@ -13,7 +13,8 @@ class binarization_logic:
         img_api = img_apis.img_api()
 
         # APIから画像を取得
-        img_resize_binary = binarization_api.binarization(img_file, threshold_numerical)
+        img_resize_binary = binarization_api.binarization(
+            img_file, threshold_numerical)
         return img_api.save_pil_img(img_resize_binary)
 
     def adaptive_binarization(self, img_file: datastructures.FileStorage, block_size: int, mean_c: int) -> bytes:
@@ -22,5 +23,6 @@ class binarization_logic:
         img_api = img_apis.img_api()
 
         # APIから画像を取得
-        img_resize_binary = binarization_api.adaptive_binarization(img_file, block_size, mean_c)
+        img_resize_binary = binarization_api.adaptive_binarization(
+            img_file, block_size, mean_c)
         return img_api.save_pil_img(img_resize_binary)
