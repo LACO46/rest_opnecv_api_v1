@@ -69,7 +69,8 @@ class blur_controller:
             return jsonify({'message': 'request image not found'}), 404
 
         # logicの呼び出し
-        blur_img = blur_logic.bilateral(file['img'], pixel_interest, sigma_color, sigma_space)
+        blur_img = blur_logic.bilateral(
+            file['img'], pixel_interest, sigma_color, sigma_space)
 
         # レスポンスを作成
         response = make_response(blur_img)

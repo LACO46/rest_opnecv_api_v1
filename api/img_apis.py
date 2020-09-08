@@ -8,6 +8,7 @@ import io
 import numpy as np
 import cv2
 
+
 class img_api:
     def save_pil_img(self, img_binary):
         # OpenCV型からPIL型へ変換

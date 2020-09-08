@@ -8,7 +8,7 @@ from logic import edge_detection_logics
 
 
 class edge_detection_controller:
-    def edge_detection(self, request: local.LocalProxy, threshold_max:int, threshold_min:int) -> wrappers.Response:
+    def edge_detection(self, request: local.LocalProxy, threshold_max: int, threshold_min: int) -> wrappers.Response:
         # 変数を定義
         edge_detection_logic = edge_detection_logics.edge_detection_logic()
         file = request.files
@@ -19,7 +19,8 @@ class edge_detection_controller:
         if(threshold_max < threshold_min):
             return jsonify({'message': 'threshold max is less than the threshold min'})
         # logicの呼び出し
-        edge_img = edge_detection_logic.edge_detection(file['img'], threshold_max, threshold_min)
+        edge_img = edge_detection_logic.edge_detection(
+            file['img'], threshold_max, threshold_min)
 
         # レスポンスを作成
         response = make_response(edge_img)

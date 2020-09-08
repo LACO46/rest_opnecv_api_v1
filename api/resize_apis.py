@@ -20,7 +20,7 @@ class resize_api:
         # リサイズ
         return cv2.resize(img, dsize=(int(width * times_numerical), int(height * times_numerical)), interpolation=cv2.INTER_LANCZOS4)
 
-    def designation_size_api(self, img_file, x_numerical:int, y_numerical: int) -> list:
+    def designation_size_api(self, img_file, x_numerical: int, y_numerical: int) -> list:
         # imgの数値のリストを読み込み
         stream = img_file.stream
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)

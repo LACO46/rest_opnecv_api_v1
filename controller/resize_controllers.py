@@ -39,7 +39,7 @@ class resize_controller:
 
         # logicの呼び出し
         designation_size_img = resize_logic.designation_size(file['img'], x, y)
-        
+
         # レスポンスの作成
         response = make_response(designation_size_img)
         response.headers.set('Content-Type', 'image/png')

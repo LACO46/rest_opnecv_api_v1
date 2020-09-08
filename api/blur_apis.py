@@ -32,7 +32,7 @@ class blur_api:
         img = cv2.imdecode(img_array, 1)
 
         # 中央値を利用したぼかし画像を作成
-        return cv2.medianBlur(img,median_numeric)
+        return cv2.medianBlur(img, median_numeric)
 
     def bilateral(self, img_file: datastructures.FileStorage, pixel_interest: int, sigma_color: int, sigma_space: int) -> list:
         # imgの数値のリストを読み込み
