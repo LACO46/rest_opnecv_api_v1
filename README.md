@@ -145,7 +145,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/bilateral/<pixel_interest>/<sigma_color>/<sigma_space>/
 ```
 
-- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定
 - `<pixel_interest>` と `<sigma_color>` と `<sigma_space>` は int を指定
 
 ## Convolutional Neural Network 処理を用いた画像の作成
@@ -208,3 +208,21 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 - `<kernel>` は数値を `,` で区切る必要がある
   - 例：`n,m,o,p`
 - `<kernel>` の長さは、 `n^2` で表すことのできる長さである必要がある
+
+## OCR 処理を用いた文字列抽出
+
+### リクエスト
+
+```
+curl -X POST -F img=@<元の画像のPATH> localhost:8080/v1/ocr/jpn/
+```
+
+### レスポンス
+
+```
+{
+  "word": <WORD>
+}
+```
+
+- `<WORD>` は OCR で抽出された文字列
