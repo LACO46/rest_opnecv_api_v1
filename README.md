@@ -53,6 +53,7 @@ curl --output <保存先のPATH> -X POST -F img=@<元の画像のPATH> localhost
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/resize/same-size/<size>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<size>` は float を指定
 
 ## サイズを指定したリサイズ画像の作成
@@ -63,6 +64,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/resize/designation-size/<x_size>*<y_size>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<x_size>` と `<y_size>` は int を指定
 
 ## ２値化画像の作成
@@ -73,6 +75,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/binarization/<threshold>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<threshold>` は int を指定
 
 ## 適応的閾値処理を用いた 2 値化画像の作成
@@ -83,6 +86,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/adaptive/binarization/<block_size>/<mean_c>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<block_size>` と `<mean_c>` は int を指定
   - `<block_size>` は奇数である必要がある
 
@@ -94,6 +98,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/edge-detection/<threshold_max>/<threshold_min>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<threshold_max>` と `<threshold_min>` は int を指定
   - `<threshold_max> > <threshold_min>` である必要がある
 
@@ -105,6 +110,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/average/<x>/<y>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<x>` と `<y>` は int を指定
 
 ## ガウシアンフィルタのぼかし処理を用いた画像の作成
@@ -115,6 +121,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/gaussian/<x>/<y>/<sigma>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<x>` と `<y>` と `<sigma>` は int を指定
   - `<x>` と `<y>` は奇数である必要がある
 
@@ -126,6 +133,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/median/<median_numeric>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<median_numeric>` は int を指定
   - `<median_numeric>` は奇数である必要がある
 
@@ -137,6 +145,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/blur/bilateral/<pixel_interest>/<sigma_color>/<sigma_space>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<pixel_interest>` と `<sigma_color>` と `<sigma_space>` は int を指定
 
 ## Convolutional Neural Network 処理を用いた画像の作成
@@ -147,11 +156,15 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/<kernel>/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
+
 ### シャープネスレベル１
 
 ```
 curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,0,3,0,0,-1,0/
 ```
+
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 
 ### シャープネスレベル２
 
@@ -159,11 +172,15 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,-1,5,-1,0,-1,0/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
+
 ### シャープネスレベル３
 
 ```
 curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
 ```
+
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 
 ### シャープネスレベル４
 
@@ -171,11 +188,15 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
+
 ### シャープネスレベル５
 
 ```
 curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-2,-1,-2,12,-2,-1,-2,-1/
 ```
+
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 
 ### シャープネスレベル６
 
@@ -183,6 +204,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/1,4,6,4,1,4,16,24,16,4,6,24,-476,24,6,4,16,24,16,4,1,4,6,4,1/
 ```
 
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
 - `<kernel>` は数値を `,` で区切る必要がある
   - 例：`n,m,o,p`
 - `<kernel>` の長さは、 `n^2` で表すことのできる長さである必要がある
