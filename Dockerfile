@@ -6,7 +6,11 @@ RUN apt-get update \
     libglib2.0-0 \
     libsm6 \
     libxrender1 \
-    libxext6
+    libxext6 \
+    tesseract-ocr \
+    libtesseract-dev \
+    tesseract-ocr-jpn  tesseract-ocr-jpn-vert \
+    tesseract-ocr-script-jpan tesseract-ocr-script-jpan-vert
 
 RUN wget https://bootstrap.pypa.io/get-pip.py
 

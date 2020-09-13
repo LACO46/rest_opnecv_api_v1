@@ -2,8 +2,10 @@
 from flask import Flask, jsonify, request, Response
 
 # import file
-from controller import (gray_scale_controllers, resize_controllers, binarization_controllers,
-                        edge_detection_controllers, blur_controllers, convolution_2d_filter_controllers)
+from controller import (gray_scale_controllers, resize_controllers,
+                        binarization_controllers, edge_detection_controllers,
+                        blur_controllers, convolution_2d_filter_controllers,
+                        ocr_controllers)
 
 
 class urls:
@@ -68,6 +70,11 @@ class urls:
     def convolution_2d_filter(kernel):
         convolution_2d_filter_controller = convolution_2d_filter_controllers.convolution_2d_filter_controller()
         return convolution_2d_filter_controller.convolution_2d_filter(request, kernel)
+
+    @app.route('/v1/ocr/<string:language>/', methods=['POST'])
+    def ocr(language):
+        ocr_controller = ocr_controllers.ocr_controller()
+        return ocr_controller.ocr(request, language)
 
     @app.errorhandler(400)
     @app.errorhandler(404)
