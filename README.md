@@ -225,4 +225,4 @@ curl -X POST -F img=@<元の画像のPATH> localhost:8080/v1/ocr/jpn/
 }
 ```
 
-- `<WORD>` は OCR で抽出された文字列
+- `<WORD>` は OCR で検出された文字列

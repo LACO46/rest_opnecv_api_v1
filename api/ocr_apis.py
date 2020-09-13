@@ -13,6 +13,6 @@ class ocr_api:
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
         img = cv2.imdecode(img_array, 1)
 
-        # OCR処理
+        # OCR検出
         result = pytesseract.image_to_string(img, lang=language)
         return result
