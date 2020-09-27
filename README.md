@@ -153,7 +153,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> 
 ### シャープネス画像作成のリクエスト
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/<kernel>/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/convolution-2d/<kernel>/
 ```
 
 - `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
@@ -161,7 +161,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 ### シャープネスレベル１
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,0,3,0,0,-1,0/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/convolution-2d/0,-1,0,0,3,0,0,-1,0/
 ```
 
 - `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
@@ -169,7 +169,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 ### シャープネスレベル２
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/0,-1,0,-1,5,-1,0,-1,0/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/convolution-2d/0,-1,0,-1,5,-1,0,-1,0/
 ```
 
 - `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
@@ -177,7 +177,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 ### シャープネスレベル３
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
 ```
 
 - `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
@@ -185,7 +185,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 ### シャープネスレベル４
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/convolution-2d/-1,-1,-1,-1,9,-1,-1,-1,-1/
 ```
 
 - `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
@@ -193,7 +193,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 ### シャープネスレベル５
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/-1,-2,-1,-2,12,-2,-1,-2,-1/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/convolution-2d/-1,-2,-1,-2,12,-2,-1,-2,-1/
 ```
 
 - `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
@@ -201,7 +201,7 @@ curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:
 ### シャープネスレベル６
 
 ```
-curl --output <保存先の画像のPATH> -X POST -F img=@./Lenna.jpg localhost:8080/v1/convolution-2d/1,4,6,4,1,4,16,24,16,4,6,24,-476,24,6,4,16,24,16,4,1,4,6,4,1/
+curl --output <保存先の画像のPATH> -X POST -F img=@<元の画像のPATH> localhost:8080/v1/convolution-2d/1,4,6,4,1,4,16,24,16,4,6,24,-476,24,6,4,16,24,16,4,1,4,6,4,1/
 ```
 
 - `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
@@ -226,3 +226,26 @@ curl -X POST -F img=@<元の画像のPATH> localhost:8080/v1/ocr/jpn/
 ```
 
 - `<WORD>` は OCR で検出された文字列
+
+## ベース画像とテンプレート画像を用いたパターンマッチング処理
+
+### パターンマッチング処理で一致した部分を囲った画像を返す
+
+```
+curl --output <保存先の画像のPATH> -X POST -F base=@<元画像のPATH> -F template@<テンプレート画像のPATH> localhost:8080/v1/template/<float:threshold>/
+```
+
+- `<保存先の画像のPATH>` は ファイル名+拡張子 を指定する
+- `<元画像のPATH>` はパターンマッチングのベースとなる画像を指定する
+- `<テンプレート画像のPATH>` はパターンマッチングのテンプレートとなる画像を指定する
+- `<threshold>` は float を指定する
+
+### パターンマッチング処理で一致した個数を返す
+
+```
+curl -X POST -F base=@<元画像のPATH> -F template@<テンプレート画像のPATH> localhost:8080/v1/template/<float:threshold>/count/
+```
+
+- `<元画像のPATH>` はパターンマッチングのベースとなる画像を指定する
+- `<テンプレート画像のPATH>` はパターンマッチングのテンプレートとなる画像を指定する
+- `<threshold>` は float を指定する

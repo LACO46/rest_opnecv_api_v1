@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request, Response
 from controller import (gray_scale_controllers, resize_controllers,
                         binarization_controllers, edge_detection_controllers,
                         blur_controllers, convolution_2d_filter_controllers,
-                        ocr_controllers)
+                        ocr_controllers, template_controllers)
 
 
 class urls:
@@ -75,6 +75,16 @@ class urls:
     def ocr(language):
         ocr_controller = ocr_controllers.ocr_controller()
         return ocr_controller.ocr(request, language)
+
+    @app.route('/v1/template/<float:threshold>/', methods=['POST'])
+    def template_img(threshold):
+        template_conrtoller = template_controllers.template_conrtoller()
+        return template_conrtoller.template_img(request, threshold)
+
+    @app.route('/v1/template/<float:threshold>/count/', methods=['POST'])
+    def template_count(threshold):
+        template_conrtoller = template_controllers.template_conrtoller()
+        return template_conrtoller.template_count(request, threshold)
 
     @app.errorhandler(400)
     @app.errorhandler(404)
