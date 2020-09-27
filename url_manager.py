@@ -77,9 +77,14 @@ class urls:
         return ocr_controller.ocr(request, language)
 
     @app.route('/v1/template/<float:threshold>/', methods=['POST'])
-    def template(threshold):
+    def template_img(threshold):
         template_conrtoller = template_controllers.template_conrtoller()
         return template_conrtoller.template_img(request, threshold)
+
+    @app.route('/v1/template/<float:threshold>/count/', methods=['POST'])
+    def template_count(threshold):
+        template_conrtoller = template_controllers.template_conrtoller()
+        return template_conrtoller.template_count(request, threshold)
 
     @app.errorhandler(400)
     @app.errorhandler(404)
