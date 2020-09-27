@@ -239,3 +239,13 @@ curl --output <保存先の画像のPATH> -X POST -F base=@<元画像のPATH> -F
 - `<元画像のPATH>` はパターンマッチングのベースとなる画像を指定する
 - `<テンプレート画像のPATH>` はパターンマッチングのテンプレートとなる画像を指定する
 - `<threshold>` は float を指定する
+
+### パターンマッチング処理で一致した個数を返す
+
+```
+curl -X POST -F base=@<元画像のPATH> -F template@<テンプレート画像のPATH> localhost:8080/v1/template/<float:threshold>/count/
+```
+
+- `<元画像のPATH>` はパターンマッチングのベースとなる画像を指定する
+- `<テンプレート画像のPATH>` はパターンマッチングのテンプレートとなる画像を指定する
+- `<threshold>` は float を指定する
